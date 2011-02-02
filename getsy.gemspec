@@ -10,8 +10,7 @@ Gem::Specification.new do |s|
   s.email       = ["graeme.collins.0@gmail.com"]
   s.homepage    = ""
   s.summary     = %q{Gets information from the Etsy API}
-  s.description = %q{Gets information from the Etsy API and makes it accessible using methods similar to
-    the ones found on ActiveRecord objects}
+  s.description = %q{Gets information from the Etsy API}
 
   s.rubyforge_project = "getsy"
 
