@@ -2,6 +2,7 @@ require 'getsy/user'
 require 'getsy/shop'
 require 'getsy/profile'
 require 'getsy/country'
+require 'getsy/section'
 
 module Getsy
 	# API_KEY is defined in an initializer
