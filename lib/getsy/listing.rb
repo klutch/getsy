@@ -50,6 +50,42 @@ module Getsy
       @section = Getsy::Section.new(value)
     end
     
+    def self.get_listing(listing_id, options = nil)
+      response = Getsy.api_call("/listings/#{listing_id}", options)
+      new(response)
+    end
+    
+    def self.find_all_listings_active(options = nil)
+      find_all_listing_active(options)
+    end
+    
+    def self.find_all_listing_active(options = nil)
+      listings = []
+      response = Getsy.api_call("/listings/active", options)
+      response.each do |listing|
+        listings.push(new(listing))
+      end
+      listings
+    end
+    
+    def self.find_all_shop_listings_active(shop_id, options = nil)
+      listings = []
+      response = Getsy.api_call("/shops/#{shop_id}/listings/active", options)
+      response.each do |listing|
+        listings.push(new(listing))
+      end
+      listings
+    end
+    
+    def self.find_all_shop_listings_featured(shop_id, options = nil)
+      listings = []
+      response = Getsy.api_call("/shops/#{shop_id}/listings/featured", options)
+      response.each do |listing|
+        listings.push(new(listing))
+      end
+      listings
+    end
+    
     def initialize(params)
       Getsy.build_from_params(self, params) if params
     end

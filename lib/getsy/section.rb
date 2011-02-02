@@ -19,6 +19,13 @@ module Getsy
       @shop = Getsy::Shop.new(value)
     end
     
+    def listings=(value)
+      @listings = []
+      value.each do |listing|
+        @listings.push(Getsy::Listing.new(listing))
+      end
+    end
+    
     def initialize(params)
       Getsy.build_from_params(self, params) if params
     end
