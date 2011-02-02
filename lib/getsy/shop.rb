@@ -64,6 +64,11 @@ module Getsy
       end
       shops
     end
+    
+    def self.get_shop(shop_id, options = nil)
+      response = Getsy.api_call("/shops/#{shop_id}", options)
+      new(response)
+    end
 
     def initialize(params = nil)
       Getsy.build_from_params(self, params) if params
