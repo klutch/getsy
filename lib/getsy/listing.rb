@@ -61,6 +61,10 @@ module Getsy
       @main_image = Getsy::Image.new(value)
     end
     
+    def shipping_info=(value)
+      @shipping_info = Getsy::ShippingInfo.new(value)
+    end
+    
     def self.get_listing(listing_id, options = nil)
       response = Getsy.api_call("/listings/#{listing_id}", options)
       new(response)
