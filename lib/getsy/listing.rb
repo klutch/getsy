@@ -50,6 +50,17 @@ module Getsy
       @section = Getsy::Section.new(value)
     end
     
+    def images=(value)
+      @images = []
+      value.each do |image|
+        @images.push(Getsy::Image.new(image))
+      end
+    end
+    
+    def main_image=(value)
+      @main_image = Getsy::Image.new(value)
+    end
+    
     def self.get_listing(listing_id, options = nil)
       response = Getsy.api_call("/listings/#{listing_id}", options)
       new(response)
