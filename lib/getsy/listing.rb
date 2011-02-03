@@ -69,6 +69,22 @@ module Getsy
       @shipping_info
     end
     
+    def payment_info=(value)
+      @payment_info = []
+      value.each do |info|
+        @payment_info.push(Getsy::Payment.new(info))
+      end
+      @payment_info
+    end
+    
+    def favored_by=(value)
+      @favored_by = []
+      value.each do |favored|
+        @favored_by.push(Getsy::FavoriteListing.new(favored))
+      end
+      @favored_by
+    end
+    
     def self.get_listing(listing_id, options = nil)
       response = Getsy.api_call("/listings/#{listing_id}", options)
       new(response)
