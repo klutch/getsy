@@ -18,10 +18,14 @@ module Getsy
     def api_call(action, options = nil)
       response = Net::HTTP.get(URI.parse(build_url(action, options)))
       response = JSON.parse(response)
-      if response["count"] > 1
+      if options["force_array"]
         response["results"]
       else
-        response["results"][0]
+        if response["count"] > 1
+          response["results"]
+        else
+          response["results"][0]
+        end
       end
     end
 
