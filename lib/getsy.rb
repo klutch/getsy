@@ -23,7 +23,12 @@ module Getsy
 
     def build_from_params(instance, params)
       params.each do |key, value|
-        instance.send("#{key.to_s.underscore}=", value)
+        if key.to_s.underscore == "url_570x_n"
+          property = "url_570xN"
+        else
+          property = key.to_s.underscore
+        end
+        instance.send("#{property}=", value)
       end
     end
     
