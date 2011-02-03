@@ -38,7 +38,7 @@ module Getsy
     end
     
     def initialize(params = nil)
-      Getsy.build_from_params(params) if params
+      Getsy.build_from_params(self, params) if params
     end
   end
 
