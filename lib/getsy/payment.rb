@@ -15,6 +15,14 @@ module Getsy
       :listing
     )
     
+    def country=(value)
+      @country = Getsy::Country.new(value)
+    end
+    
+    def listing=(value)
+      @listing = Getsy::Listing.new(value)
+    end
+    
     def self.get_listing_payment(listing_payment_id, options = nil)
       response = Getsy.api_call("/payments/#{listing_payment_id}", options)
       new(response)
