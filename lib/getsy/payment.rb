@@ -25,7 +25,7 @@ module Getsy
     
     def self.get_listing_payment(listing_payment_id, options = nil)
       response = Getsy.api_call("/payments/#{listing_payment_id}", options)
-      new(response)
+      new(response[0])
     end
  
     def self.get_listing_payment_info(listing_id, options = nil)

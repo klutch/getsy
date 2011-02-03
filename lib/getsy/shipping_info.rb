@@ -33,7 +33,21 @@ module Getsy
       @region = Getsy::Region.new(value)
     end
     
-    def initialize(params)
+    def self.find_all_listing_shipping_info(listing_id, options = nil)
+      shipping_info = []
+      response = Getsy.api_call("/listings/#{listing_id}/shipping/info", options)
+      response.each do |info|
+        shipping_info.push(new(info))
+      end
+      shipping_info
+    end
+    
+    def self.get_shipping_info(shipping_info_id, options = nil)
+      response = Getsy.api_call("/shipping/info/#{shipping_info_id}", options)
+      new(response[0])
+    end
+    
+    def initialize(params = nil)
       Getsy.build_from_params(self, params) if params
     end
   end

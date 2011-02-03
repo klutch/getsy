@@ -1,5 +1,7 @@
 module Getsy
 
+  # Resource: Country
+  #   http://developer.etsy.com/docs/read/resource_country
   class Country
     attr_accessor(
       :country_id,
@@ -25,10 +27,10 @@ module Getsy
 
     def self.get_country(country_id, options = nil)
       response = Getsy.api_call("/countries/#{country_id}", options)
-      new(response)
+      new(response[0])
     end
 
-    def initialize(params)
+    def initialize(params = nil)
       Getsy.build_from_params(self, params) if params
     end
 

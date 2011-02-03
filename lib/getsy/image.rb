@@ -40,10 +40,10 @@ module Getsy
     
     def self.get_listing_image(listing_id, listing_image_id, options = nil)
       response = Getsy.api_call("/listings/#{listing_id}/images/#{listing_image_id}", options)
-      new(response)
+      new(response[0])
     end
     
-    def initialize(params)
+    def initialize(params = nil)
       Getsy.build_from_params(self, params) if params
     end
   end

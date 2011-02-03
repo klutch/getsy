@@ -26,7 +26,21 @@ module Getsy
       end
     end
     
-    def initialize(params)
+    def self.find_all_shop_sections(shop_id, options = nil)
+      sections = []
+      response = Getsy.api_call("/shops/#{shop_id}/sections", options)
+      response.each do |section|
+        sections.push(new(section))
+      end
+      sections
+    end
+    
+    def self.get_shop_section(shop_section_id, options = nil)
+      response = Getsy.api_call("/sections/#{shop_section_id}", options)
+      new(response[0])
+    end
+    
+    def initialize(params = nil)
       Getsy.build_from_params(self, params) if params
     end
   

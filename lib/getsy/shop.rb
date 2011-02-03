@@ -65,11 +65,20 @@ module Getsy
       shops
     end
     
+    def self.find_all_user_shops(user_id, options = nil)
+      shops = []
+      response = Getsy.api_call("/users/#{user_id}/shops", options)
+      response.each do |shop|
+        shops.push(new(shop))
+      end
+      shops
+    end
+    
     def self.get_shop(shop_id, options = nil)
       response = Getsy.api_call("/shops/#{shop_id}", options)
-      new(response)
+      new(response[0])
     end
-
+    
     def initialize(params = nil)
       Getsy.build_from_params(self, params) if params
     end

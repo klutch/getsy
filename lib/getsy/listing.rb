@@ -1,5 +1,7 @@
 module Getsy
 
+  # Resource: Listing
+  #   http://developer.etsy.com/docs/read/resource_listing
   class Listing
     attr_accessor(
       :listing_id,
@@ -87,7 +89,7 @@ module Getsy
     
     def self.get_listing(listing_id, options = nil)
       response = Getsy.api_call("/listings/#{listing_id}", options)
-      new(response)
+      new(response[0])
     end
     
     def self.find_all_listings_active(options = nil)
@@ -121,11 +123,10 @@ module Getsy
       listings
     end
     
-    def initialize(params)
+    def initialize(params = nil)
       Getsy.build_from_params(self, params) if params
     end
   
   end
 
 end
-
