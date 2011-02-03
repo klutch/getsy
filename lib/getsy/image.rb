@@ -1,5 +1,7 @@
 module Getsy
 
+  # Resource: Image
+  #   http://developer.etsy.com/docs/read/resource_listingimage
   class Image
     attr_accessor(
       :listing_image_id,
