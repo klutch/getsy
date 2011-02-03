@@ -20,6 +20,18 @@ module Getsy
       @listing = Getsy::Listing.new(value)
     end
     
+    # Deprecated, yet the api returns it
+    def favorite_listing_id=(value)
+    end
+    
+    # Also deprecated
+    def creation_tsz=(value)
+    end
+    
+    # And deprecated
+    def state=(value)
+    end
+    
     def self.find_all_listing_favored_by(listing_id, options = nil)
       options ||= {}
       options["force_array"] = true
