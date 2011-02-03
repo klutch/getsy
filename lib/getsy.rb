@@ -8,6 +8,7 @@ require 'getsy/image'
 require 'getsy/shipping_info'
 require 'getsy/region'
 require 'getsy/payment'
+require 'getsy/favorite_listing'
 
 module Getsy
   # API_KEY is defined in an initializer
