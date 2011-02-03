@@ -72,11 +72,15 @@ module Getsy
     end
     
     def payment_info=(value)
-      @payment_info = []
-      value.each do |info|
-        @payment_info.push(Getsy::Payment.new(info))
+      if value.is_a?(Array)
+        @payment_info = []
+        value.each do |info|
+          @payment_info.push(Getsy::Payment.new(info))
+        end
+        @payment_info
+      else
+        @payment_info = Getsy::Payment.new(value)
       end
-      @payment_info
     end
     
     def favored_by=(value)
