@@ -62,7 +62,11 @@ module Getsy
     end
     
     def shipping_info=(value)
-      @shipping_info = Getsy::ShippingInfo.new(value)
+      @shipping_info = []
+      value.each do |info|
+        @shipping_info.push(Getsy::ShippingInfo.new(info))
+      end
+      @shipping_info
     end
     
     def self.get_listing(listing_id, options = nil)
